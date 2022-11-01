@@ -1,0 +1,120 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <nav class="container">
+        <div class="input-group">
+            <div class="temp">
+                <label class="title">Sci-Hub</label>
+                <a href="main-page" class="title">About</a>
+                <a href="main-page" class="title">Contacts</a>
+                <a href="main-page" class="title">Blog</a>
+                <a href="stream" class="title">Stream</a>
+            </div>
+            <button class="btn search"><i class="fa fa-search" aria-hidden="true"></i> Search
+            </button>
+            <button class="btn post" (click)="onAddPost()"><i class="fa-thin fa-book-sparkles"></i>Post
+            </button>
+            <div class="about">
+                <div>
+                    <a href="user-info">
+                        <img class="profile" src="{{user.profileImageUrl}}" alt="Profile Image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="main-page">
+        <div class="cards">
+            <div class="card" *ngFor="let publication of publications">
+                <div class="card-profile">
+                    <div>
+                        <p>{{publication.title}}</p>
+                    </div>
+                    <div class="break"></div>
+                    <div>
+                        <p>
+                            <a href="{{publication.storagePath}}" target="_blank" class="download">Download</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card-description">
+                    <p>
+                        {{publication.description}}
+                    </p>
+                </div>
+                <div class="labels">
+                    <div class="label" *ngFor="let topic of publication.topics">
+                        {{topic.description}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="line">
+        </div>
+        <div>
+            <div class="recommendations">
+                <p> Recommendations </p>
+                <p (click)="onFilter(topic.name)" class="tags" *ngFor="let topic of topics">
+                    {{topic.name}}
+                </p>
+                <p (click)="onResetFilter()" class="tags">
+                    Reset
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<div id="addModal" class="bg-modal">
+    <div class="modal-content">
+        <div class="publication-title">
+            <span>New Publication</span>
+            <span id="close" (click)="close()" class="close">&times;</span>
+        </div>
+        <form #postForm="ngForm" (ngSubmit)="post(postForm)">
+            <div class="form-group">
+                <input type="text" #titleInput="ngModel" ngModel name="title" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+                <input type="text" #description="ngModel" ngModel name="description" placeholder="Description">
+            </div>
+            <fieldset class="form-group">
+                <legend>Publication Visibility</legend>
+                <div>
+                    <input type="checkbox" name="isPublic" ngModel checked>
+                    <label>Public</label>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <div>
+                    <label style="color: rgba(0, 0, 0, 0.6);">Publication Type</label>
+                </div>
+                <select style="text-align: center; font-size: 1rem;" name="publicationType" ngModel="BOOK" required>
+                    <option value="BOOK" style="font-family: monospace;">BOOK</option>
+                    <option value="ARTICLE">ARTICLE</option>
+                    <option value="PAPER">PAPER</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="tags" ngModel required placeholder="Topics">
+            </div>
+            <div class="form-group">
+                <input id="chooseFile" type="file" (change)="onPublicationChoose($event)" class="uploadBox">
+                <label for="chooseFile" class="file-upload">Choose file</label>
+            </div>
+            <div class="form-group">
+                <button class="btn-post" type="submit" [disabled]="showLoading">
+                    <i *ngIf="showLoading" class="fas fa-spinner fa-spin"></i>
+                    <span *ngIf="showLoading"> Uploading...</span>
+                    <span *ngIf="!showLoading">Post</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</html>

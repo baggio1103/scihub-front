@@ -1,0 +1,120 @@
+.style {
+    font-family: monospace;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
+.container-items {
+    border: 1px solid rgb(226, 228, 230);
+    box-shadow: 0 0 20px 10px #f3f3f3;
+    border-radius: 10px;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    margin-top: 11rem;
+}
+
+input[type='text'],
+input[type='email'] {
+    border: 1px solid rgb(226, 228, 230);
+    border-radius: 5px;
+    padding: 0.5rem 0.9rem;
+    width: 30vw;
+    transition: border-color 0.15s box-shadow 0.15s;
+    display: block;
+    font-size: 1.1rem;
+}
+
+input[type='text']:focus,
+input[type='email']:focus {
+    border-color: #7DB0FB;
+    outline: 0;
+    box-shadow: 0 0 4px 4px rgba(24, 117, 255, 0.25);
+}
+
+.btn {
+    border: 0;
+    border-radius: 5px;
+    background: #2b80ff;
+    color: #fff;
+    padding: 0.5rem 0.7rem;
+    width: 30vw;
+    display: block;
+    margin-top: 1.5rem;
+    margin-left: 0.9rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    outline: 0;
+    text-align: center;
+}
+
+button:disabled {
+    background: #80b1f9;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-family: monospace;
+    font-weight: 400px;
+    color: #1b0760;
+}
+
+p {
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+a {
+    border: 1px solid #4bb34b;
+    background: #4bb34b;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    padding: 0.3rem;
+    text-align: center;
+}
+
+.username {
+    margin-bottom: 2rem;
+    margin-top: 20rem;
+}
+
+
+@media screen and (max-width:800px) {
+    .container-items {
+        width: 300px;
+    }
+
+    .title {
+        margin-top: 1.5rem;
+    }
+
+    p {
+        display: flex;
+        flex-direction: column;
+    }
+
+    a {
+        margin-top: 1rem;
+        /* margin-left: 0.8rem;
+        margin-right: 0.8rem; */
+    }
+
+    btn {
+        margin-bottom: 1.5rem;
+    }
+}

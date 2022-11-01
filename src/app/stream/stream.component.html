@@ -1,0 +1,55 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <nav class="nav-container">
+        <div>
+            <a href="main-page" class="title">Sci-Hub </a>
+            <a href="stream" class="title">Stream</a>
+        </div>
+        <div class="buttons">
+            <form>
+                <input class="btn" type="search" placeholder="Search">
+            </form>
+        </div>
+        <div>
+            <a href="/user-info">
+                <img class="profile" src="{{user.profileImageUrl}}" alt="Profile Image">
+            </a>
+        </div>
+    </nav>
+    <div class="main-page">
+        <div class="card" *ngFor="let publication of publications">
+            <div class="card-profile">
+                <div class="card-download">
+                    <div>
+                        <span>
+                            {{publication.title}}
+                        </span>
+                    </div>
+                    <div class="break"></div>
+                    <div>
+                        <span>
+                            <a href="{{publication.storagePath}}" target="_blank" class="download">Download</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-description">
+                <span>
+                    {{publication.description}}
+                </span>
+            </div>
+            <div class="labels">
+                <div class="label" *ngFor="let topic of publication.topics">
+                    {{topic.description}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
